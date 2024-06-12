@@ -1,0 +1,18 @@
+package 알고리즘연습.육월십이일;
+
+// 자연수 n을 뒤집어 각 자리 숫자를 원소로 가지는 배열 형태로 리턴해주세요. 예를들어 n이 12345이면 [5,4,3,2,1]을 리턴합니다.
+
+public class Ex50 {
+    public int[] solution(long n) {
+        String str = Long.toString(n);
+
+        int[] answer = new int[str.length()];
+
+        for (int i = 0; i < str.length(); i++) {
+            answer[i] = str.charAt(str.length() - 1 - i) - '0';
+        }
+
+        return answer;
+    }
+
+}
