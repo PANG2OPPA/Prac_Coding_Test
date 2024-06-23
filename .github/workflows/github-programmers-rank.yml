@@ -1,80 +1,22 @@
-name: github-programmers-rank
+name: Trigger Rank Repository Workflow
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: '0 5 * * 1-5'
 
 jobs:
-  build:
+  trigger-rank-workflow:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Trigger Rank Repository Workflow
+        uses: actions/github-script@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the project
-        run: npm run build
-
-      - name: Set up environment variables
-        run: |
-          touch .env
-          echo PROGRAMMERS_TOKEN_ID=${{ secrets.PROGRAMMERS_TOKEN_ID }} >> .env
-          echo PROGRAMMERS_TOKEN_PW=${{ secrets.PROGRAMMERS_TOKEN_PW }} >> .env
-
-      - name: Start the project
-        run: npm run start
-        env:
-          PROGRAMMERS_TOKEN_ID: ${{ secrets.PROGRAMMERS_TOKEN_ID }}
-          PROGRAMMERS_TOKEN_PW: ${{ secrets.PROGRAMMERS_TOKEN_PW }}
-
-  cron:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the project
-        run: npm run build
-
-      - name: Set up environment variables
-        run: |
-          touch .env
-          echo PROGRAMMERS_TOKEN_ID=${{ secrets.PROGRAMMERS_TOKEN_ID }} >> .env
-          echo PROGRAMMERS_TOKEN_PW=${{ secrets.PROGRAMMERS_TOKEN_PW }} >> .env
-
-      - name: Start the project
-        run: npm run start
-        env:
-          PROGRAMMERS_TOKEN_ID: ${{ secrets.PROGRAMMERS_TOKEN_ID }}
-          PROGRAMMERS_TOKEN_PW: ${{ secrets.PROGRAMMERS_TOKEN_PW }}
+          github-token: ${{ secrets.MY_GITHUB_TOKEN }}
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: 'PANG2OPPA',
+              repo: 'github-programmers-rank',
+              workflow_id: 'github-programmers-rank.yml',
+              ref: 'master'
+            })
