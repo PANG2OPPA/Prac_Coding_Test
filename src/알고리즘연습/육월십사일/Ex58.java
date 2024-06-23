@@ -1,4 +1,4 @@
-package 알고리즘연습.육월십이일;
+package 알고리즘연습.육월십사일;
 
 // 총 n장의 카드덱을 가지고 있습니다. 이 카드들은 가장 작은 숫자부터 가장 큰 숫자까지 순서대로 정렬되어 있습니다. 카드를 뽑는 규칙은 다음과 같습니다.
 //
@@ -13,7 +13,7 @@ package 알고리즘연습.육월십이일;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Ex52 {
+public class Ex58 {
     public static int findLastCard(int n) {
         Queue<Integer> queue = new LinkedList<>();
 

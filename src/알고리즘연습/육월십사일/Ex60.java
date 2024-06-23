@@ -1,6 +1,6 @@
-package 알고리즘연습.육월십이일;
+package 알고리즘연습.육월십사일;
 
-public class Ex54 {
+public class Ex60 {
 
     public static void main(String[] args) {
         int s = 4; // s 값 설정

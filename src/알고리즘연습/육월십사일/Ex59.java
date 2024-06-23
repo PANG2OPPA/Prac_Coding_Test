@@ -1,4 +1,4 @@
-package 알고리즘연습.육월십이일;
+package 알고리즘연습.육월십사일;
 
 // 4개의 주사위를 가지고 있는 상금 게임에 참가했습니다. 각 주사위는 1부터 6까지의 숫자를 가지고 있습니다. 주사위를 던져서 나오는 결과에 따라 다음과 같이 상금이 결정됩니다.
 //
@@ -12,9 +12,7 @@ package 알고리즘연습.육월십이일;
 //
 //당신이 주사위를 던져 나온 숫자들을 입력 받아, 이 게임에서 얻을 수 있는 상금을 계산하는 프로그램을 만드세요.
 
-import java.util.Arrays;
-
-public class Ex53 {
+public class Ex59 {
 
     public static void main(String[] args) {
         int[] dice = {3, 3, 3, 3}; // 예시: 주사위 숫자 배열
